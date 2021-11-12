@@ -11,8 +11,8 @@ pipeline{
             steps {
                 sh "terraform init"
             }
-            }
         }
+        
 
         stage("plan"){
             if(action == plan)
@@ -38,4 +38,5 @@ pipeline{
             }
             sh label: 'terraform plan', script: "terraform apply -lock=false -input=false tf${ENV}_plan"
         }
+    }
 }
